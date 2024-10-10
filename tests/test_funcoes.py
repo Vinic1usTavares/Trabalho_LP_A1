@@ -60,6 +60,11 @@ class TestFuncoes(unittest.TestCase):
     def test_processar_anime(self):
         func.processar_anime()
         self.assertTrue(os.path.exists('data/anime_filtrado_limpo.csv'))
+
+    def test_extrair_ano(self):
+        self.assertEqual(func.extrair_ano('12/08/2015'), 2015)
+        self.assertEqual(func.extrair_ano('01/01/2000'), 2000)
+        self.assertEqual(func.extrair_ano('31/12/1999'), 1999)
         
 
 if __name__ == '__main__':

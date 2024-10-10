@@ -1,11 +1,14 @@
 import pandas as pd
 import re
+import pandas as pd
 import numpy as np
-from funcoes import *  
-import sys 
+import matplotlib.pyplot as plt
+import datetime
+from typing import Optional
+import re
 
 # Função para abrir o arquivo anime.csv e ler os dados.
-def abrir_anime_csv(caminho='../data/anime.csv'):
+def abrir_anime_csv(caminho: str ='../data/anime.csv') -> pd.DataFrame:
     """
     Lê o arquivo CSV de animes e retorna um DataFrame do Pandas.
 
@@ -39,7 +42,7 @@ def abrir_anime_csv(caminho='../data/anime.csv'):
         return None
 
 # Função para filtrar os gêneros indesejados.
-def filtrar_generos(df):
+def filtrar_generos(df: pd.DataFrame)->pd.DataFrame:
     """
     Filtra os gêneros indesejados do DataFrame de animes.
 
@@ -62,7 +65,7 @@ def filtrar_generos(df):
     return dados_filtrados
 
 # Função para converter datas para o formato DD/MM/YYYY.
-def convert_date(date_str):
+def convert_date(date_str: str) ->str:
     """
     Converte uma string de data no formato 'Mmm DD, YYYY' para 'DD/MM/YYYY'.
 
@@ -89,7 +92,7 @@ def convert_date(date_str):
     return None
 
 # Função para adicionar as datas do arquivo animes_complemento.csv.
-def adicionar_datas(anime):
+def adicionar_datas(anime: pd.DataFrame) -> pd.DataFrame:
     """
     Adiciona a coluna de datas ao DataFrame de animes com base em um arquivo complementar.
 
@@ -133,7 +136,7 @@ def adicionar_datas(anime):
     return anime
 
 # Função para preencher episódios "unknown".
-def preencher_episodios_unknown(anime):
+def preencher_episodios_unknown(anime: pd.DataFrame)->pd.DataFrame:
     """
     Preenche os valores "unknown" na coluna de episódios com dados de um DataFrame de animes limpos.
 
@@ -165,7 +168,7 @@ def preencher_episodios_unknown(anime):
     return anime
 
 # Função para limpar os dados finais.
-def limpar_dados(df):
+def limpar_dados(df: pd.DataFrame)->pd.DataFrame:
     """
     Limpa o DataFrame, removendo entradas inválidas e preenchendo valores padrão.
 
@@ -188,7 +191,7 @@ def limpar_dados(df):
     return df
 
 # Função para remover linhas com episódios "unknown".
-def remover_unknown(df):
+def remover_unknown(df: pd.DataFrame)->pd.DataFrame:
     """
     Remove linhas do DataFrame que têm episódios marcados como "unknown".
 
@@ -205,7 +208,7 @@ def remover_unknown(df):
     return df[df['episodes'].str.lower() != 'unknown']
 
 # Função para salvar o arquivo final como anime_filtrado_limpo.csv.
-def salvar_anime_csv(df, caminho='../data/anime_filtrado_limpo.csv'):
+def salvar_anime_csv(df: pd.DataFrame, caminho: str='../data/anime_filtrado_limpo.csv'):
     """
     Salva o DataFrame em um arquivo CSV.
 
@@ -261,7 +264,33 @@ def processar_anime():
 
         # Salva o DataFrame final em um novo arquivo
         salvar_anime_csv(anime_data_final)
+        
+def extrair_ano(data_str: str) -> Optional[int]:
+    """
+    Extrai o ano da data no formato 'DD/MM/YYYY'.
 
-# Executa o processo
-if __name__ == "__main__":
-    processar_anime()
+    Parâmetros
+    ----------
+    data_str : str
+        A string representando a data no formato 'DD/MM/YYYY'.
+
+    Retorna
+    -------
+   Opcional [int]
+        O ano retirado da string da data. Retorna None se a data não pode
+        ser analizada.
+
+    Examplos
+    --------
+    >>> extrair_ano('12/08/2015')
+    2015
+
+    >>> extrair_ano('invalid date')
+    None
+    """
+    try:
+        return datetime.datetime.strptime(data_str, "%d/%m/%Y").year
+    except (ValueError, TypeError):
+        return None
+
+

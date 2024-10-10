@@ -30,11 +30,6 @@ selected_data['episodes'] = pd.cut(selected_data['episodes'] ,bins_episodes, lab
 
 print(selected_data.groupby('episodes').count())
 
-rating_media = selected_data.groupby('episodes')['rating'].mean()
-rating_max = selected_data.groupby('episodes')['rating'].max()
-rating_min = selected_data.groupby('episodes')['rating'].min()
-rating_mediana = selected_data.groupby('episodes')['rating'].median()
-
   
 
 # Gera informação para analizar a relação entre a quantidade de episódios de uma obra e o número de membros
@@ -52,12 +47,13 @@ plt.close() # Fechar a figura para evitar conflitos
 
 # Análise detalhada de episódios X membros para episódios >= 500
 df_more_episodes = data_frame[(data_frame['episodes'] >= 500) & (data_frame['members'] < 100000)].copy() # members <100 000 para não contabilizar "outliners"
-media = df_more_episodes['rating'].mean() # média de rating dos episódios com valor >= 500
+media = round(df_more_episodes['rating'].mean(), 2) # média de rating dos episódios com valor >= 500
+mediana = round(df_more_episodes['rating'].median(), 2) # mediana de rating dos episódios com valor >= 500
 
 # Geração do gráfico
 plt.figure(figsize=(10, 6))
 plt.scatter(df_more_episodes['episodes'], df_more_episodes['members'], alpha=0.5)
-plt.title(f'Episódios(500+) x Número de membros (media:{media})')
+plt.title(f'Episódios(500+) x Número de membros (media:{media}, mediana: {mediana})')
 plt.xlabel('Episódios(500+)')
 plt.ylabel('Número de membros')
 plt.grid(True)
@@ -82,12 +78,13 @@ plt.close() # Fechar a figura para evitar conflitos
 # Análise para episódios < 125
 
 df_less_episodes = data_frame[data_frame['episodes'] <= 125].copy() # Seleção dos episódios com valor menor ou igual a 125
-media = df_less_episodes['rating'].mean() # média dos ratings
+media = round(df_less_episodes['rating'].mean(), 2) # média dos ratings
+mediana = round(df_less_episodes['rating'].median(), 2) # mediana dos ratings
 
 # Geração do Gráfico
 plt.figure(figsize=(10, 6))
 plt.scatter(df_less_episodes['episodes'], df_less_episodes['rating'], alpha=0.5)
-plt.title(f'Episódios(125-) x Rating (media:{media})')
+plt.title(f'Episódios(125-) x Rating (media:{media}, mediana: {mediana})')
 plt.xlabel('Episódios(125-)')
 plt.ylabel('rating')
 plt.grid(True)
