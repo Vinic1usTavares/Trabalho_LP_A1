@@ -86,12 +86,12 @@ media = df_less_episodes['rating'].mean() # média dos ratings
 
 # Geração do Gráfico
 plt.figure(figsize=(10, 6))
-plt.scatter(df_less_episodes['episodes'], df_less_episodes['members'], alpha=0.5)
-plt.title(f'Episódios(125-) x Número de membros (media:{media})')
+plt.scatter(df_less_episodes['episodes'], df_less_episodes['rating'], alpha=0.5)
+plt.title(f'Episódios(125-) x Rating (media:{media})')
 plt.xlabel('Episódios(125-)')
-plt.ylabel('Número de membros')
+plt.ylabel('rating')
 plt.grid(True)
-plt.savefig('.\docs1\dados_hipotese2\Episódios(125-)xNúmero de membros.png') # Salvar o gráfico
+plt.savefig('.\docs1\dados_hipotese2\Episódios(125-)xrating') # Salvar o gráfico
 plt.close() # Fechar a figura para evitar conflitos
 
   
