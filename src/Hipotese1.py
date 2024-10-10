@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-def analisar_generos_populares(anime_data):
+def analisar_generos_populares(anime_data: pd.DataFrame):
     """
     Analisa a relação entre a nota e o número de membros para animes de gêneros populares e outros gêneros.
     
@@ -59,7 +59,7 @@ def analisar_generos_populares(anime_data):
     plt.ylabel('Número de Membros')
     plt.xlim(0, 10)
     plt.ylim(0, anime_data['members'].max() * 1.1)
-    plt.savefig('/Python/projeto/Trabalho_LP_A1/data/relacao_notas_membros_generos_populares.png')
+    plt.savefig('./data/dados_hipotese1/relacao_notas_membros_generos_populares.png')
     plt.close()
     print("Gráfico de relação entre notas e número de membros (Gêneros Populares) salvo.")
 
@@ -71,7 +71,7 @@ def analisar_generos_populares(anime_data):
     plt.ylabel('Número de Membros')
     plt.xlim(0, 10)
     plt.ylim(0, anime_data['members'].max() * 1.1)
-    plt.savefig('/Python/projeto/Trabalho_LP_A1/data/relacao_notas_membros_outros_generos.png')
+    plt.savefig('./data/dados_hipotese1/relacao_notas_membros_outros_generos.png')
     plt.close()
     print("Gráfico de relação entre notas e número de membros (Outros Gêneros) salvo.")
 
@@ -106,12 +106,12 @@ def analisar_generos_populares(anime_data):
     plt.ylabel('Número Médio de Membros')
     plt.xticks([p + bar_width / 2 for p in x], media_membros_df.index)
     plt.legend()
-    plt.savefig('/Python/projeto/Trabalho_LP_A1/data/media_membros_por_intervalo_notas.png')
+    plt.savefig('./data/dados_hipotese1/media_membros_por_intervalo_notas.png')
     plt.close()
     print("Gráfico de barras mostrando o número médio de membros por intervalo de notas salvo.")
 
 
-def processar_anime():
+def processar_anime() -> None:
     """
     Função principal para carregar e processar os dados do arquivo CSV de animes limpos, 
     gerando as análises sobre os gêneros populares e outros gêneros.
@@ -129,7 +129,7 @@ def processar_anime():
     -----------------
     /Python/projeto/Trabalho_LP_A1/data/anime_filtrado_limpo.csv: Arquivo contendo os dados de animes limpos e filtrados.
     """
-    caminho_arquivo = '/Python/projeto/Trabalho_LP_A1/data/anime_filtrado_limpo.csv'
+    caminho_arquivo = './data/anime_filtrado_limpo.csv'
     
     # Verifica se o arquivo existe
     if not os.path.isfile(caminho_arquivo):

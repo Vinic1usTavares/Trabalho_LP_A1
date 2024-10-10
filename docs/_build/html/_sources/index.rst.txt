@@ -69,41 +69,7 @@ Resultados da Análise Exploratória
    :align: center
    :alt: Hipotese 1
 
-.. image:: ../docs1/dados_hipotese2/Episódios(125-)xNúmero de membros.png
-   :width: 400px
-   :height: 200px
-   :align: center
-   :alt: Hipotese 2
 
-   .. image:: ../docs1/dados_hipotese2/Episódios(125-)xrating.png
-   :width: 400px
-   :height: 200px
-   :align: center
-   :alt: Hipotese 2
-
-   .. image:: docs1/dados_hipotese2/Episódios(500+)xNúmero de membros.png
-   :width: 400px
-   :height: 200px
-   :align: center
-   :alt: Hipotese 2
-
-   .. image:: docs1/dados_hipotese2/EpisódiosxNúmero de membros.png
-   :width: 400px
-   :height: 200px
-   :align: center
-   :alt: Hipotese 2
-
-   .. image:: docs1/dados_hipotese2/Episódiosxrating.png
-   :width: 400px
-   :height: 200px
-   :align: center
-   :alt: Hipotese 2
-
-      .. image:: docs1/dados_hipotese2/Quantidade_x_episodios.png
-   :width: 400px
-   :height: 200px
-   :align: center
-   :alt: Hipotese 2
 
 
 

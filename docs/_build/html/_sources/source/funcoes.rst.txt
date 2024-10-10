@@ -1,0 +1,7 @@
+funcoes module
+==============
+
+.. automodule:: src.funcoes
+   :members:
+   :undoc-members:
+   :show-inheritance:

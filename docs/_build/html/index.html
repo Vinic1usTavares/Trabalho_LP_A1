@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analise de Dados Animes documentation &#8212; Analise de Dados Animes 2024 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=0c18a1f4" />
+    <script src="_static/documentation_options.js?v=6fefd858"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="funcoes module" href="source/funcoes.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="analise-de-dados-animes-documentation">
+<h1>Analise de Dados Animes documentation<a class="headerlink" href="#analise-de-dados-animes-documentation" title="Link to this heading">¶</a></h1>
+<p>Animações, filmes e séries são os principais alvos de entretenimento dessa geração. Em particular, os animes são queridos entre muitas pessoas, que apreciam a cultura japonesa.
+Este trabalho tem como objetivo explorar a base de dados de animes, realizar o pré-processamento necessário, como a limpeza e tratamento de valores ausentes e testar as hipóteses propostas, listadas a seguir:</p>
+<p>Hipóteses</p>
+<p>Animes com altas notas de recomendação são geralmente de gêneros populares, como ação, aventura, fantasia, luta, esportes, shounen;
+Animes com mais episódios recebem menos recomendações por exigirem maior comprometimento;
+Animes lançados recentemente tendem a serem mais populares, com melhores notas e  mais membros.</p>
+<p>Limpeza de dados</p>
+<p>A equipe escolheu três bases de dados, ambas retiradas do Kaggle. Antes de começar a análise de dados, é necessário realizar uma limpeza de dados. Para isso, foram criadas algumas funções que realizam as modificações necessárias.</p>
+<p>No arquivo funcoes.py:</p>
+<p>A função filtrar_gêneros retira do DataFrame de animes os gêneros que não devem fazer parte da análise, como os gêneros +18;
+A função convert_data converte uma data no formato MM/DD/YYYY para o formato DD/MM/YYYY;
+A função adcionar_datas  retira uma coluna de datas de um arquivo complementar e, em seguida, a adiciona ao DataFrame de animes;
+A função preencher_episodios_unknown troca os valores “unknown” por dados de outro DataFrame de animes limpo;
+A função salvar_anime_csv salva o DataFrame como um arquivo csv;
+Por fim, a função processar_anime  gera a base de dados que será trabalhada, integrando as três bases de dados.</p>
+<p>Resultados da Análise Exploratória</p>
+<a class="reference internal image-reference" href="../data/anos_vs_membros_combinado.png"><img alt="Hipotese 3" class="align-center" src="../data/anos_vs_membros_combinado.png" style="width: 400px; height: 200px;" />
+</a>
+<a class="reference internal image-reference" href="_images/media_membros_por_intervalo_notas.png"><img alt="Hipotese 1" class="align-center" src="_images/media_membros_por_intervalo_notas.png" style="width: 400px; height: 200px;" />
+</a>
+<a class="reference internal image-reference" href="../datra/membros_medio_por_intervalo.png"><img alt="Hipotese 3" class="align-center" src="../datra/membros_medio_por_intervalo.png" style="width: 400px; height: 200px;" />
+</a>
+<a class="reference internal image-reference" href="_images/relacao_notas_membros_generos_populares.png"><img alt="Hipotese 1" class="align-center" src="_images/relacao_notas_membros_generos_populares.png" style="width: 400px; height: 200px;" />
+</a>
+<a class="reference internal image-reference" href="_images/relacao_notas_membros_outros_generos.png"><img alt="Hipotese 1" class="align-center" src="_images/relacao_notas_membros_outros_generos.png" style="width: 400px; height: 200px;" />
+</a>
+<p>Validação das Hipóteses</p>
+<p>Hipótese 1:</p>
+<p>Animes com altas notas de recomendação são geralmente de gêneros populares, como ação, aventura, fantasia, luta, esportes, shounen</p>
+<p>Análise:</p>
+<p>De acordo com os gráficos da relação entre nota e número de membros para animes de gêneros populares e de outros gêneros, o número de membros que avaliou gêneros populares com nota entre 8 e 10 é significativamente maior do que o número de membros que avaliou os outros gêneros com nota entre 8 e 10, embora o número de notas entre 6 e 8 em ambos os gráficos parece ser a mesma.</p>
+<p>Considerações finais: de fato, animes populares tendem a ter notas altas de recomendação.</p>
+<p>Hipótese 2:</p>
+<p>Animes com Mais Episódios Recebem Menos Recomendações por Exigirem Maior Comprometimento</p>
+<p>Análise:</p>
+<p>Como visto nos dois primeiros gráficos, animes com mais episódios (tome por exemplo 500 episódios ou mais) têm  no geral menos de 4 000 membros e no geral têm um “rating” entre 500 e 800 , média de 637 e mediana de 634.</p>
+<blockquote>
+<div><p>Em contrapartida, animes com 125 episódios ou menos têm um espectro de “rating” bem mais amplo, variando de valores próximos de 0 até valores próximos de 10000, média de 661, mediana de 669 e uma quantidade considerável de animes com mais de 40 000 membros.
+É possível perceber uma distribuição seguindo a lei de potência no gráfico “Episódios x Membros” que corrobora com a hipótese.</p>
+</div></blockquote>
+<p>Considerações finais: é possível observar que animes com menos episódios tendem a ser mais populares que animes com muitos episódios (é claro que existem ‘outlines’ como One Piece ou Naruto, mas são exceções à regra).</p>
+<p>Hipótese 3:</p>
+<p>Animes lançados recentemente tendem a serem mais populares, com melhores notas e  mais membros.</p>
+<p>De acordo com o gráfico “Ano de Lançamento vs Número de Membros (até 2017)”, a popularidade dos animes lançados recentemente não difere muito da popularidade dos animes mais antigos.
+Analisando o gráfico “Número Médio de Membros por Intervalo de Lançamento”, o número de membros no intervalo de 2000 até 2010 (recentes) é maior do que o número de membros nos anos anteriores ao ano 2000.</p>
+<p>Considerações finais: Apesar de o segundo gráfico indicar que a hipótese está correta, o primeiro gráfico mostra que a diferença entre o número de membros em anos recentes e anos mais antigos é pequena. Assim, essa hipótese não pode ser totalmente comprovada.</p>
+<p>Desafios Encontrados</p>
+<p>A utilização de três DataSets: A equipe utilizou três DataSets, uma vez que a coluna de episódios do primeiro estava incompleta, e foi preciso completá-la com dados de outros dois DataSets.</p>
+<p>Contribuições de cada integrante</p>
+<p>Gabriela Barbosa: Ficou responsável por fazer o relatório e analisou a hipótese 1.
+Vinicius Tavares: Contribuiu com a limpeza dos dados e analisou a hipótese 2.
+Matheus Mendes: Contribuiu com a limpeza dos dados e analisou a hipótese 3.
+======================================
+.. Welcome to Your Project’s documentation!</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/funcoes.html">Funções</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="source/funcoes.html#src.funcoes.abrir_anime_csv"><code class="docutils literal notranslate"><span class="pre">abrir_anime_csv()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/funcoes.html#src.funcoes.adicionar_datas"><code class="docutils literal notranslate"><span class="pre">adicionar_datas()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/funcoes.html#src.funcoes.convert_date"><code class="docutils literal notranslate"><span class="pre">convert_date()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/funcoes.html#src.funcoes.filtrar_generos"><code class="docutils literal notranslate"><span class="pre">filtrar_generos()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/funcoes.html#src.funcoes.limpar_dados"><code class="docutils literal notranslate"><span class="pre">limpar_dados()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/funcoes.html#src.funcoes.preencher_episodios_unknown"><code class="docutils literal notranslate"><span class="pre">preencher_episodios_unknown()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/funcoes.html#src.funcoes.processar_anime"><code class="docutils literal notranslate"><span class="pre">processar_anime()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/funcoes.html#src.funcoes.remover_unknown"><code class="docutils literal notranslate"><span class="pre">remover_unknown()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/funcoes.html#src.funcoes.salvar_anime_csv"><code class="docutils literal notranslate"><span class="pre">salvar_anime_csv()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source/main.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/modules.html">Modulos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="source/Hipotese1.html">Hipotese1 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/Hipotese2.html">Hipotese2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/Hipotese3.html">Hipotese3 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/funcoes.html">funcoes module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/main.html">main module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source/Hipotese1.html">Hipoteses 1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="source/Hipotese1.html#src.Hipotese1.analisar_generos_populares"><code class="docutils literal notranslate"><span class="pre">analisar_generos_populares()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/Hipotese1.html#src.Hipotese1.processar_anime"><code class="docutils literal notranslate"><span class="pre">processar_anime()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source/Hipotese2.html">Hipoteses 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/Hipotese3.html">Hipoteses 3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="source/Hipotese3.html#src.Hipotese3.analisar_hipotese"><code class="docutils literal notranslate"><span class="pre">analisar_hipotese()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/Hipotese3.html#src.Hipotese3.extrair_ano"><code class="docutils literal notranslate"><span class="pre">extrair_ano()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="#">Table of Contents</a></h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/funcoes.html">Funções</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/main.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/modules.html">Modulos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/Hipotese1.html">Hipoteses 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/Hipotese2.html">Hipoteses 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/Hipotese3.html">Hipoteses 3</a></li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2023.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,7 @@
+Hipotese3 module
+================
+
+.. automodule:: src.Hipotese3
+   :members:
+   :undoc-members:
+   :show-inheritance:

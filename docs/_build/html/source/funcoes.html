@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>funcoes module &#8212; Analise de Dados Animes 2024 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=0c18a1f4" />
+    <script src="../_static/documentation_options.js?v=6fefd858"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-src.funcoes">
+<span id="funcoes-module"></span><h1>funcoes module<a class="headerlink" href="#module-src.funcoes" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.funcoes.abrir_anime_csv">
+<span class="sig-prename descclassname"><span class="pre">src.funcoes.</span></span><span class="sig-name descname"><span class="pre">abrir_anime_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">caminho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../data/anime.csv'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.funcoes.abrir_anime_csv" title="Link to this definition">¶</a></dt>
+<dd><p>Lê o arquivo CSV de animes e retorna um DataFrame do Pandas.</p>
+<section id="parametros">
+<h2>Parâmetros<a class="headerlink" href="#parametros" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>caminho<span class="classifier">str, opcional</span></dt><dd><p>O caminho para o arquivo CSV (padrão é ‘../data/anime.csv’).</p>
+</dd>
+</dl>
+</section>
+<section id="retorna">
+<h2>Retorna<a class="headerlink" href="#retorna" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>DataFrame</dt><dd><p>Um DataFrame contendo os dados do arquivo CSV.</p>
+</dd>
+</dl>
+</section>
+<section id="excecoes">
+<h2>Exceções<a class="headerlink" href="#excecoes" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>FileNotFoundError</dt><dd><p>Se o arquivo especificado não for encontrado.</p>
+</dd>
+<dt>Exception</dt><dd><p>Para qualquer erro durante a leitura do arquivo.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.funcoes.adicionar_datas">
+<span class="sig-prename descclassname"><span class="pre">src.funcoes.</span></span><span class="sig-name descname"><span class="pre">adicionar_datas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">anime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.funcoes.adicionar_datas" title="Link to this definition">¶</a></dt>
+<dd><p>Adiciona a coluna de datas ao DataFrame de animes com base em um arquivo complementar.</p>
+<section id="id1">
+<h2>Parâmetros<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>anime<span class="classifier">DataFrame</span></dt><dd><p>O DataFrame contendo os dados dos animes.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h2>Retorna<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>DataFrame</dt><dd><p>O DataFrame atualizado com a coluna de datas adicionada.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.funcoes.convert_date">
+<span class="sig-prename descclassname"><span class="pre">src.funcoes.</span></span><span class="sig-name descname"><span class="pre">convert_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.funcoes.convert_date" title="Link to this definition">¶</a></dt>
+<dd><p>Converte uma string de data no formato ‘Mmm DD, YYYY’ para ‘DD/MM/YYYY’.</p>
+<section id="id3">
+<h2>Parâmetros<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>date_str<span class="classifier">str</span></dt><dd><p>A string de data a ser convertida.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>Retorna<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>str ou None</dt><dd><p>A data convertida no formato ‘DD/MM/YYYY’, ou None se a conversão falhar.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.funcoes.filtrar_generos">
+<span class="sig-prename descclassname"><span class="pre">src.funcoes.</span></span><span class="sig-name descname"><span class="pre">filtrar_generos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.funcoes.filtrar_generos" title="Link to this definition">¶</a></dt>
+<dd><p>Filtra os gêneros indesejados do DataFrame de animes.</p>
+<section id="id5">
+<h2>Parâmetros<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">DataFrame</span></dt><dd><p>O DataFrame original com os dados dos animes.</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h2>Retorna<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>DataFrame</dt><dd><p>Um DataFrame contendo apenas animes que não possuem os gêneros indesejados.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.funcoes.limpar_dados">
+<span class="sig-prename descclassname"><span class="pre">src.funcoes.</span></span><span class="sig-name descname"><span class="pre">limpar_dados</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.funcoes.limpar_dados" title="Link to this definition">¶</a></dt>
+<dd><p>Limpa o DataFrame, removendo entradas inválidas e preenchendo valores padrão.</p>
+<section id="id7">
+<h2>Parâmetros<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">DataFrame</span></dt><dd><p>O DataFrame a ser limpo.</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h2>Retorna<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>DataFrame</dt><dd><p>O DataFrame limpo.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.funcoes.preencher_episodios_unknown">
+<span class="sig-prename descclassname"><span class="pre">src.funcoes.</span></span><span class="sig-name descname"><span class="pre">preencher_episodios_unknown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">anime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.funcoes.preencher_episodios_unknown" title="Link to this definition">¶</a></dt>
+<dd><p>Preenche os valores “unknown” na coluna de episódios com dados de um DataFrame de animes limpos.</p>
+<section id="id9">
+<h2>Parâmetros<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>anime<span class="classifier">DataFrame</span></dt><dd><p>O DataFrame contendo os dados dos animes.</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h2>Retorna<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>DataFrame</dt><dd><p>O DataFrame atualizado com os episódios preenchidos.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.funcoes.processar_anime">
+<span class="sig-prename descclassname"><span class="pre">src.funcoes.</span></span><span class="sig-name descname"><span class="pre">processar_anime</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.funcoes.processar_anime" title="Link to this definition">¶</a></dt>
+<dd><p>Função principal que coordena o processamento dos dados dos animes.</p>
+<p>Realiza as seguintes etapas:
+1. Lê o arquivo anime.csv.
+2. Filtra os gêneros indesejados.
+3. Adiciona as datas a partir do animes_complemento.csv.
+4. Preenche episódios desconhecidos.
+5. Limpa os dados finais.
+6. Remove linhas com episódios “unknown”.
+7. Salva o DataFrame final em anime_filtrado_limpo.csv.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.funcoes.remover_unknown">
+<span class="sig-prename descclassname"><span class="pre">src.funcoes.</span></span><span class="sig-name descname"><span class="pre">remover_unknown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.funcoes.remover_unknown" title="Link to this definition">¶</a></dt>
+<dd><p>Remove linhas do DataFrame que têm episódios marcados como “unknown”.</p>
+<section id="id11">
+<h2>Parâmetros<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">DataFrame</span></dt><dd><p>O DataFrame a ser filtrado.</p>
+</dd>
+</dl>
+</section>
+<section id="id12">
+<h2>Retorna<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>DataFrame</dt><dd><p>O DataFrame sem as linhas que têm episódios “unknown”.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.funcoes.salvar_anime_csv">
+<span class="sig-prename descclassname"><span class="pre">src.funcoes.</span></span><span class="sig-name descname"><span class="pre">salvar_anime_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caminho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../data/anime_filtrado_limpo.csv'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.funcoes.salvar_anime_csv" title="Link to this definition">¶</a></dt>
+<dd><p>Salva o DataFrame em um arquivo CSV.</p>
+<section id="id13">
+<h2>Parâmetros<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">DataFrame</span></dt><dd><p>O DataFrame a ser salvo.</p>
+</dd>
+<dt>caminho<span class="classifier">str, opcional</span></dt><dd><p>O caminho para salvar o arquivo (padrão é ‘../data/anime_filtrado_limpo.csv’).</p>
+</dd>
+</dl>
+</section>
+<section id="id14">
+<h2>Exceções<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>Exception</dt><dd><p>Para qualquer erro durante o salvamento do arquivo.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/source/funcoes.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2023.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/source/funcoes.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

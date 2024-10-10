@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hipotese3 module &#8212; Analise de Dados Animes 2024 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=0c18a1f4" />
+    <script src="../_static/documentation_options.js?v=6fefd858"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-src.Hipotese3">
+<span id="hipotese3-module"></span><h1>Hipotese3 module<a class="headerlink" href="#module-src.Hipotese3" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.Hipotese3.analisar_hipotese">
+<span class="sig-prename descclassname"><span class="pre">src.Hipotese3.</span></span><span class="sig-name descname"><span class="pre">analisar_hipotese</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arquivo_csv</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Hipotese3.analisar_hipotese" title="Link to this definition">¶</a></dt>
+<dd><p>Analyzes the correlation between the release year of anime and its popularity,
+measured by the number of members, for the hypothesis that recently released
+anime tend to be more popular.</p>
+<p>The analysis generates two visualizations:
+1. A scatter plot showing the relationship between the release year and the number
+of members (popularity), differentiating recent (2010-2017) from older anime.</p>
+<ol class="arabic simple" start="2">
+<li><p>A bar chart showing the average number of members per 10-year interval of release.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arquivo_csv</strong> (<em>str</em>) – Path to the CSV file containing anime data. The dataset should include
+the columns ‘aired’ (release date in DD/MM/YYYY format), ‘rating’ (user
+rating), and ‘members’ (popularity measure).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A tuple containing two file paths of the generated visualizations:
+- <cite>ano_vs_membros_combinado.png</cite>: A scatter plot showing the relationship between
+release year and member count, differentiating between recent (2010-2017) and non-recent
+anime, and including a trendline for the average members per year.</p>
+<ul class="simple">
+<li><p><cite>membros_medio_por_intervalo.png</cite>: A bar chart showing the average number of</p></li>
+</ul>
+<p>members grouped by 10-year release intervals.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple of str</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The function assumes the ‘aired’ column contains dates in the format ‘DD/MM/YYYY’.</p></li>
+</ul>
+<p>If a date cannot be parsed, it is treated as missing data.
+- The dataset’s release years are split into two groups: anime released from 2010 to
+2017 (considered recent) and anime released before 2010 (non-recent).
+- The scatter plot includes a vertical line at 2010, marking the distinction between
+recent and non-recent anime, and a trendline for the average number of members per year.
+- The bar chart groups the number of members by 10-year intervals, starting from 1940,
+and plots the average number of members for each interval.
+- The plots are saved in the <cite>/Python/projeto/Trabalho_LP_A1/data/</cite> directory.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">analisar_hipotese</span><span class="p">(</span><span class="s1">&#39;/Python/projeto/Trabalho_LP_A1/data/anime_filtrado_limpo.csv&#39;</span><span class="p">)</span>
+<span class="go">(&#39;/Python/projeto/Trabalho_LP_A1/data/ano_vs_membros_combinado.png&#39;,</span>
+<span class="go"> &#39;/Python/projeto/Trabalho_LP_A1/data/membros_medio_por_intervalo.png&#39;)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> – If the provided CSV file does not exist.</p></li>
+<li><p><strong>ValueError</strong> – If required columns (‘aired’, ‘members’) are missing from the dataset.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.Hipotese3.extrair_ano">
+<span class="sig-prename descclassname"><span class="pre">src.Hipotese3.</span></span><span class="sig-name descname"><span class="pre">extrair_ano</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Hipotese3.extrair_ano" title="Link to this definition">¶</a></dt>
+<dd><p>Extracts the year from a date string in the format ‘DD/MM/YYYY’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data_str</strong> (<em>str</em>) – A string representing the date in ‘DD/MM/YYYY’ format.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The year extracted from the date string. Returns None if the date string
+cannot be parsed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int or None</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">extrair_ano</span><span class="p">(</span><span class="s1">&#39;12/08/2015&#39;</span><span class="p">)</span>
+<span class="go">2015</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">extrair_ano</span><span class="p">(</span><span class="s1">&#39;invalid date&#39;</span><span class="p">)</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/source/Hipotese3.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2023.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/source/Hipotese3.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
