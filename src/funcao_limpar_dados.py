@@ -29,7 +29,7 @@ def filtrar_generos(df):
 # Função para salvar os dados filtrados
 def salvar_anime_csv(df, caminho='anime_filtrado.csv'):
     try:
-        df.to_csv(caminho, index=False, encoding='ISO-8859-1', sep=';')  # Salva com o mesmo encoding e delimitador
+        df.to_csv(caminho, index=False, encoding='ISO-8859-1', sep=',')  # Salva com o mesmo encoding e delimitador
         print(f"Os dados filtrados foram salvos em '{caminho}'.")
     except Exception as e:
         print(f"Erro ao salvar o arquivo: {e}")
